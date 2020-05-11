@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development nodemon ./bin/http.js",
-    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles --verbose"
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles --verbose --forceExit"
   },
   "keywords": [],
   "author": "",

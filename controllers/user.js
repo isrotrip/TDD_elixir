@@ -6,6 +6,8 @@ const { signToken } = require('../helpers/jwt');
 
 class UserController {
   static register(req, res, next) {
+    // console.log(req.headers) // untuk mengetahui headers
+
     const inputUser = {
       email: req.body.email,
       password: req.body.password

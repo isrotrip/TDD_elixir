@@ -7,8 +7,14 @@ const jwt = require('jsonwebtoken');
 const { queryInterface } = require('../models/index.js').sequelize;
 
 describe('User Router', function() {
-  beforeAll(function() {
-    queryInterface.bulkDelete('Users');
+  beforeAll(function(done) {
+    queryInterface.bulkDelete('Users')
+      .then(_ => {
+        done();
+      })
+      .catch(err => {
+        done(err);
+      });
   });
 
   describe('Register a user', function() {
@@ -19,8 +25,11 @@ describe('User Router', function() {
           .send({
             email: 'arnold@gmail.com',
             password: '12345'
-          })
-          .set('Accept', 'application/json')
+          }) // data
+          .set({
+            Accept: 'application/json',
+            access_token: 'token'
+          }) // headers bisa uncomment di ./controllers/user line 9 untuk mengetahui headers
           .expect(201)
           .expect('Content-Type', /json/)
           .expect(function (result) {
@@ -97,8 +106,14 @@ describe('User Router', function() {
     })
   })
 
-  afterAll(function() {
-    queryInterface.bulkDelete('Users');
+  afterAll(function(done) {
+    queryInterface.bulkDelete('Users')
+      .then(_ => {
+        done();
+      })
+      .catch(err => {
+        done(err);
+      });
   });
 });
 
