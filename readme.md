@@ -34,3 +34,5 @@ https://jestjs.io/docs/en/expect
 https://jestjs.io/docs/en/api
 
 12. apabila kalian ada routing yang menggunakan dependencies yang membutuhkan limitasi quota atau waktu seperti googleSignIn dan nodemailer kalian dapat memanfaatkan stud untuk mocking hasil kembalian dari dependencies tersebut. cara mudah menggunakan metode stud dari sinon (devDependencies). silahkan baca di ./test/user.test.js line 3-5, 70-73 untuk lebih jelas cara penggunaannya.
+
+13. sudah ditambahkan hint di ./test/product.test.js apabila kalian ingin mengenerate fake data untuk testing

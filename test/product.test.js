@@ -11,7 +11,7 @@ describe('Product Router', function() {
     createdAt: '2020-05-11T15:19:17.682Z',
     updatedAt: '2020-05-11T15:19:17.682Z'
   }]; // isinya diisi dengan dummy yang merupakan gambaran data yang akan dipakai saat testing
-  // dummy akan digantikan pada saat setup dibuat di line 29
+  // dummy akan digantikan pada saat setup dibuat di line 54
 
   let fakePeople = [{
     id: 1,
@@ -19,14 +19,39 @@ describe('Product Router', function() {
     password: hashPassword('12345'),
     createdAt: new Date,
     updatedAt: new Date
+  }, {
+    id: 2,
+    email: 'successEdit@mail.com',
+    password: hashPassword('12345'),
+    createdAt: new Date,
+    updatedAt: new Date
+  }, {
+    id: 3,
+    email: 'failEdit@mail.com',
+    password: hashPassword('12345'),
+    createdAt: new Date,
+    updatedAt: new Date
+  }, {
+    id: 4,
+    email: 'successDelete@mail.com',
+    password: hashPassword('12345'),
+    createdAt: new Date,
+    updatedAt: new Date
+  }, {
+    id: 5,
+    email: 'failDelete@mail.com',
+    password: hashPassword('12345'),
+    createdAt: new Date,
+    updatedAt: new Date
   }]; // fake adalah data bohongan yang dipake saat testing dan development, seperti faker js
+  // gunakan data fake di json akan lebih rapih.
 
   beforeAll(function(done) {
     queryInterface.bulkInsert('Users', fakePeople, {
       returning: true
     })
       .then(newUsers => {
-        people = newUsers;
+        people = newUsers; // setup people
         done();
       })
       .catch(err => {
