@@ -40,7 +40,7 @@ describe('User Router', function() {
     });
 
     describe('Failed:', function() {
-      test('Should return status code 201 with result of JSON with keys (id, email)', function(done) {
+      test('Should return status code 400 with result of JSON because password length should between 4 - 8', function(done) {
         request(app)
           .post('/register')
           .send({
@@ -71,7 +71,7 @@ describe('User Router', function() {
       sinon.stub(jwt, 'sign').returns('Hash_JWT');
       sinon.stub(jwt, 'verify').returns({email: 'arnold@gmail.com'}) // returns di hardcode
 
-      test('Should return status code 201 with result of JSON with keys (id, email)', function(done) {
+      test('Should return status code 200 with result of JSON with keys (access_token)', function(done) {
         request(app)
         .post('/login')
         .send({
